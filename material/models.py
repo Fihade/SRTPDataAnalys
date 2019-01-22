@@ -21,3 +21,53 @@ class rawMaterials(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class HeavySetalSlag(models.Model):
+    id = models.CharField(primary_key=True,max_length=10)
+    temp = models.IntegerField()
+    strength = models.FloatField(max_length=10)
+    rate = models.FloatField(max_length=10)
+
+    def _str_(self):
+        return self.temp, self.rate
+
+
+class RedMud(models.Model):
+    id = models.CharField(primary_key=True,max_length=10)
+    temp = models.IntegerField()
+    strength = models.FloatField(max_length=10)
+    rate = models.FloatField(max_length=10)
+
+    def __str__(self):
+        return self.temp, self.rate
+
+
+class SteelSlag(models.Model):
+    id = models.CharField(primary_key=True,max_length=10)
+    temp = models.IntegerField()
+    strength = models.FloatField(max_length=10)
+    rate = models.FloatField(max_length=10)
+
+    def __str__(self):
+        return self.temp, self.rate
+
+
+class VantaiSlag(models.Model):
+    id = models.CharField(primary_key=True,max_length=10)
+    temp = models.IntegerField()
+    strength = models.FloatField(max_length=10)
+    rate = models.FloatField(max_length=10)
+
+    def __str__(self):
+        return self.temp, self.rate
+
+
+class NiIronSlag(models.Model):
+    id = models.CharField(primary_key=True,max_length=10)
+    temp = models.IntegerField()
+    strength = models.FloatField(max_length=10)
+    rate = models.FloatField(max_length=10)
+
+    def __str__(self):
+        return self.temp, self.rate

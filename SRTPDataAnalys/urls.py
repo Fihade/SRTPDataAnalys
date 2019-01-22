@@ -21,6 +21,7 @@ from material import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'homepage/', views.home, name='home'),
-    url(r'^$', views.home, name='home1'),
+    url(r'^(?P<rawmaterial_id>\d+)$', views.sectorgraph, name='sectorgraph'),
+    url('^line/$', views.linegraph, name='linegraph')
+
 ]
