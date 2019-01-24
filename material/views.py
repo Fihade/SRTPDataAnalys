@@ -15,6 +15,7 @@ def sectorgraph(request, rawmaterial_id):
 
 
 def linegraph(request):
+
     rate_list = list(HeavySetalSlag.objects.values_list('rate', flat=True))
     temp_list = list(HeavySetalSlag.objects.values_list('temp', flat=True))
     t_list = []
@@ -22,4 +23,5 @@ def linegraph(request):
         a = str(temp_list[i])
         t_list.append(a)
     t_list = mark_safe(t_list)
-    return render(request, 'lineGraph.html', {'temp': t_list, 'rate': rate_list})
+    name = mark_safe('含重金属渣')
+    return render(request, 'lineGraph.html', {'name': name, 'temp': t_list, 'rate': rate_list})

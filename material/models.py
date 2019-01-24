@@ -24,7 +24,7 @@ class rawMaterials(models.Model):
 
 
 class HeavySetalSlag(models.Model):
-    id = models.CharField(primary_key=True,max_length=10)
+    id = models.CharField(primary_key=True, max_length=10)
     temp = models.IntegerField()
     strength = models.FloatField(max_length=10)
     rate = models.FloatField(max_length=10)
@@ -64,10 +64,11 @@ class VantaiSlag(models.Model):
 
 
 class NiIronSlag(models.Model):
-    id = models.CharField(primary_key=True,max_length=10)
+    id = models.CharField(primary_key=True, max_length=10)
     temp = models.IntegerField()
     strength = models.FloatField(max_length=10)
     rate = models.FloatField(max_length=10)
 
     def __str__(self):
         return self.temp, self.rate
+
