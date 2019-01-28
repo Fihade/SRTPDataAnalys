@@ -30,20 +30,36 @@
     var option = {
         title: {
             text: '{{ name }}的温度与吸水率之间关系'
+            
         },
         xAxis: {
             name: '温度/⁰C',
             type: 'category',
             data: {{ temp }},
+            lineStyle:
+            {
+                color: '#ffffff'
+            }
         },
         yAxis: {
             name: '吸水率/百分比',
-            type: 'value'
+            type: 'value',
+            lineStyle:
+            {
+                color: '#ffffff'
+            }
         },
         series: [{
             data: {{ rate }},
             type: 'line'
-        }]
+        }],
+        axisLine:
+        {
+            lineStyle:
+            {
+                color: '#ffffff',
+            }
+        }
     };
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);

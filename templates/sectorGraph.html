@@ -1,154 +1,121 @@
 <!DOCTYPE html>
 <html style="height: 100%">
-   <head>
-       <meta charset="utf-8">
-       <style type="text/css">
-           h1
-           {
-               color: #ffffff;
-               text-align: center;
-               margin-top: 40px;
-               margin-bottom: 50px;
-               font-family: 'Noto Sans SC', sans-serif;
-           }
-           p
-           {
-               color: #ffffff;
-               text-align: center;
-               margin-top: 40px;
-               margin-left: 200px;
-               margin-right: 200px;
-               margin-bottom: 50px;
-               font-family: 'Noto Sans SC', sans-serif;
-               fontSize: 20px
-
-           }
-           div
-           {
-               margin:0 auto;
-               width: 600px;
-               height: 600px;
-
-           }
-           img.line
-           {
-               {#margin-left: 300px;#}
-               {#margin-right: 300px;#}
-               {#margin-top: 50px;#}
-               display:block;
-               margin: 0 auto;
-           }
-           img.process
-           {
-               display:block;
-               margin: 0 auto;
-           }
-
-        </style>
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
-    </head>
-    <body style="height: 100%; margin: 0" bgcolor="#000E20">
-    <h1>冶金废渣资源化</h1>
-    <p>&emsp;&emsp;&nbsp;这是一个本科生的srtp项目，大量钢渣、赤泥、铁合金渣、铜渣等冶金废渣不能应用于水泥、混凝土行业，将其制备为陶瓷是其大宗量和高附加值利用的有效途径。与传统陶瓷原料不同，冶金渣成分波动，如何避免对产品质量影响；如何在生产过程中，能够快速响应原料的波动，实现原料配比或烧结参数的自动调整适应，是固废资源化利用的共性问题。冶金渣种类繁多，组成、矿相等都不相同，如何能够把这些变化的影响进行总结分析和应用，也是利用固废制备陶瓷技术的关键。</p>
-    <p>&emsp;&emsp;&nbsp;我们致力于通过收集收集、整理现有冶金渣制备陶瓷的相关数据，进一步采用大数据分析方法和工具，深度挖掘和学习现有的冶金渣制备陶瓷的相关数据，获得冶金渣制备陶瓷的资源化利用软件初步设计和应用，从而能够实现克服原料波动或产品变化等条件下，并适应多种冶金渣利用的冶金渣陶瓷的智慧生产收集、整理现有冶金渣制备陶瓷的相关数据，进一步采用大数据分析方法和工具，深度挖掘和学习现有的冶金渣制备陶瓷的相关数据，获得冶金渣制备陶瓷的资源化利用软件初步设计和应用，从而能够实现克服原料波动或产品变化等条件下，并适应多种冶金渣利用的冶金渣陶瓷的智慧生产。</p>
-    <img class="line" src="static/img/line.jpg">
-    <h2 style= "color: white;margin-top: 70px;text-align: center">如何获取相关数据*</h2>
-    <p style="font-style: italic;">- 将鼠标悬停在数据点或数据块上获取更多信息</p>
-    <h2 style= "color: white;margin-top: 70px;text-align: center;margin-bottom: 100px">数据获取的工艺路线</h2>
-    <img class="process" src="static/img/pro.png">
-   
-   
-   {% comment %} 模块原料组成 {% endcomment %}
-    <h1 style="margin-top: 60px">{{ rawmaterial.name }}的原料占比</h1>
-   <div class="contan" id="container" style="height: 100%"></div>
-   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
-   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
-   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
-   <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
-   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
-   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=/iFGajjVSg0xGT6wOEumOsO12VEYVi3yB/"></script>
-    <script type="text/javascript">
-
-       var dom = document.getElementById("container");
-       var myChart = echarts.init(dom);
-       var app = {};
-       option = null;
-       var option = {
-           title:{
-               text:''
-           },
-           series:[{
-               name:'原料占比',
-               type:'pie',
-               radius:'60%',
-               data:[
-                    {value:{{ rawmaterial.CaO }},name:'CaO'},
-                    {value:{{ rawmaterial.SiO2 }},name:'SiO2'},
-                    {value:{{ rawmaterial.Al2O3 }},name:'Al2O3'},
-                    {value:{{ rawmaterial.MgO }},name:'MgO'},
-                    {value:{{ rawmaterial.Fe2O3 }},name:'Fe2O3'},
-                    {value:{{ rawmaterial.MnO }},name:'MnO'},
-                    {value:{{ rawmaterial.TiO2 }},name:'TiO2'},
-                    {value:{{ rawmaterial.K2O }},name:'K2O'},
-                    {value:{{ rawmaterial.Na2O }},name:'Na2O'},
-                    {value:{{ rawmaterial.SO3 }},name:'SO3'},
-                    {value:{{ rawmaterial.P2O5}},name:'P2O5'},
-                    {value:{{ rawmaterial.Cr2O3 }},name:'Cr2O3'},
-               ]
-           }]
-        };
-        if (option && typeof option === "object") {
-            myChart.setOption(option, true);
-        }
-   </script>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/echarts/3.7.1/echarts.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=/iFGajjVSg0xGT6wOEumOsO12VEYVi3yB/"></script>
+</head>
+<body style="height: 100%; margin: 0" bgcolor="#000E20">
+<h1>冶金废渣资源化</h1>
+<p>&emsp;&emsp;&nbsp;这是一个本科生的srtp项目，大量钢渣、赤泥、铁合金渣、铜渣等冶金废渣不能应用于水泥、混凝土行业，将其制备为陶瓷是其大宗量和高附加值利用的有效途径。与传统陶瓷原料不同，冶金渣成分波动，如何避免对产品质量影响；如何在生产过程中，能够快速响应原料的波动，实现原料配比或烧结参数的自动调整适应，是固废资源化利用的共性问题。冶金渣种类繁多，组成、矿相等都不相同，如何能够把这些变化的影响进行总结分析和应用，也是利用固废制备陶瓷技术的关键。</p>
+<p>&emsp;&emsp;&nbsp;我们致力于通过收集收集、整理现有冶金渣制备陶瓷的相关数据，进一步采用大数据分析方法和工具，深度挖掘和学习现有的冶金渣制备陶瓷的相关数据，获得冶金渣制备陶瓷的资源化利用软件初步设计和应用，从而能够实现克服原料波动或产品变化等条件下，并适应多种冶金渣利用的冶金渣陶瓷的智慧生产收集、整理现有冶金渣制备陶瓷的相关数据，进一步采用大数据分析方法和工具，深度挖掘和学习现有的冶金渣制备陶瓷的相关数据，获得冶金渣制备陶瓷的资源化利用软件初步设计和应用，从而能够实现克服原料波动或产品变化等条件下，并适应多种冶金渣利用的冶金渣陶瓷的智慧生产。</p>
+<img class="line" src="static/img/line.jpg">
+<h2 style="color: white;margin-top: 70px;text-align: center">如何获取相关数据*</h2>
+<p style="font-style: italic;">- 将鼠标悬停在数据点或数据块上获取更多信息</p>
+<h2 style="color: white;margin-top: 70px;text-align: center;margin-bottom: 100px">数据获取的工艺路线</h2>
+<img class="process" src="static/img/pro.png">
 
 
+{% comment %} 模块原料组成 {% endcomment %}
+<h2 style="color: white;margin-top: 70px;text-align: center">原料化学组成</h2>
+<div class="contan" id="container" style="height: 400px;width: 300px"></div>
+<script type="text/javascript">
+
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    var option = {
+        title: {
+            text: '{{ rawmaterial.name }}的原料占比',
+            x: 'center',
+            y: '320px',
+            textStyle:
+            {
+                color: '#ffffff',
+                fontSize: 15,
+            },
+        },
+        series: [{
+            name: '原料占比',
+            type: 'pie',
+            radius: '60%',
+            data: [
+                {value:{{ rawmaterial.CaO }}, name: 'CaO'},
+                {value:{{ rawmaterial.SiO2 }}, name: 'SiO2'},
+                {value:{{ rawmaterial.Al2O3 }}, name: 'Al2O3'},
+                {value:{{ rawmaterial.MgO }}, name: 'MgO'},
+                {value:{{ rawmaterial.Fe2O3 }}, name: 'Fe2O3'},
+                {value:{{ rawmaterial.MnO }}, name: 'MnO'},
+                {value:{{ rawmaterial.TiO2 }}, name: 'TiO2'},
+                {value:{{ rawmaterial.K2O }}, name: 'K2O'},
+                {value:{{ rawmaterial.Na2O }}, name: 'Na2O'},
+                {value:{{ rawmaterial.SO3 }}, name: 'SO3'},
+                {value:{{ rawmaterial.P2O5}}, name: 'P2O5'},
+                {value:{{ rawmaterial.Cr2O3 }}, name: 'Cr2O3'},
+            ]
+        }]
+    };
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>
 
 
-       <div id="main" style="width: 600px;height:400px;"></div>
-       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
-       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
-       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
-       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
-       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
-       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=/iFGajjVSg0xGT6wOEumOsO12VEYVi3yB/"></script>
-       <script type="text/javascript">
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
     var option = {
         title: {
-            text: '的温度与吸水率之间关系',
+            text: '{{ name }}的温度与吸水率之间关系',
             textStyle: {
-                fontSize: 18,
-                fontWeight: 'bolder',
-                color: '#333'          // 主标题文字颜色
+                color: '#ffffff',
+                fontSize: 15,
             },
         },
         xAxis: {
             name: '温度/⁰C',
             type: 'category',
-            data: ['a','b','c','d','e'],
+            data: {{ temp }},
+            axisLine:
+            {
+                lineStyle:
+                {
+                    width: 2,
+                    color: '#ffffff',
+                }
+            }
         },
         yAxis: {
             name: '吸水率/百分比',
-            type: 'value'
+            type: 'value',
+            axisLine:
+            {
+                lineStyle:
+                {
+                    width: 2,
+                    color: '#ffffff',
+                }
+            }
         },
         series: [{
-            data: [1,2,3,4,5],
+            data: {{ rate }},
             type: 'line'
-        }]
+        }],
+        axisLine:
+        {
+            lineStyle:
+            {
+                color: '#ffffff',
+            }
+        }
     };
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>
-   </body>
+</body>
 
 </html>
